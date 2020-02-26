@@ -28,6 +28,12 @@ explore: order_items {
     sql_on: ${users.id} = ${order_items.user_id} ;;
   }
 
+  join: repeat_purchase_facts {
+    relationship: many_to_one
+    type: full_outer
+    sql_on: ${order_items.order_id} = ${repeat_purchase_facts.order_id} ;;
+  }
+
   join: inventory_items {
     relationship: one_to_one
     type: left_outer
